@@ -10,9 +10,11 @@ function main
     # The main menu stored in a variable
     $Menu = @(
         "
-                                        BloatBeGone
+                                                                        
+                                    -<------| BloatBeGone |----->-  
+                                                             
             [1] Remove Windows BloatWare        [2] Choose What To and What Not to Remove
-            [3] Revert Changes                  [3] Exit
+            [3] Revert Changes                  [4] Exit
         
          "
      )   
@@ -27,27 +29,60 @@ function main
         #>
         "1"
         {
-            Write-host "TEST"
+            Clear-Host
+            RemoveWindowsBloatware
         }
+        <#
+            This switch statement  allows the user
+            to choose what to remove and will call an external program 
+            that does so.
+        #>
         "2"
         {
-
+            Clear-Host
+            UserChoice
         }
+        <#
+            Reverts Changes and runs an external program
+            created by me that will revert the changes
+        #>
         "3"
         {
 
         }
+        <#
+            This just straight up
+            exits the application
+        #>
         "4"
         {
-
+            Clear-Host
+            Exit
         }
     }
     
 }
-
+<#
+    Function that removes all windows bloatware straight up
+#>
 function RemoveWindowsBloatware
 {
 
+
+}
+<#
+
+#>
+function UserChoice
+{
+
+}
+
+<#
+
+#>
+function RevertBackToPreviousConfiguration
+{
 
 }
 
