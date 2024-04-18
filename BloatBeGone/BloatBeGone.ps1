@@ -5,6 +5,7 @@
                     remove perse in bloatware
 
 #>
+$global:CurrentDir = Get-Location
 function main
 {
     # The main menu stored in a variable
@@ -48,7 +49,8 @@ function main
         #>
         "3"
         {
-
+            Clear-Host
+            RevertBackToPreviousConfiguration
         }
         <#
             This just straight up
@@ -83,7 +85,7 @@ function UserChoice
 #>
 function RevertBackToPreviousConfiguration
 {
-
+    
 }
 
 main
