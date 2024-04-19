@@ -8,6 +8,13 @@
 $global:CurrentDir = Get-Location
 function main
 {
+    <#
+        GENERAL VARIABLES THAT ARE USED 
+        FOR DIFFERENT CMDLET OPERATIONS
+        WITHIN THE BLOATBEGONE
+        POWERSHELL PROGRAM
+    #>
+    $Date = Get-Date
     # The main menu stored in a variable
     $Menu = @(
         "
@@ -30,8 +37,26 @@ function main
         #>
         "1"
         {
-            Clear-Host
-            RemoveWindowsBloatware
+            try 
+            {
+                Clear-Host
+                RemoveWindowsBloatware    
+            }
+            catch
+            {
+                <#
+                    THIS POPS AN ERROR TO THE DISPLAY AND WILL EXIT THE PROGRAM
+                    AFTER TEN SECONDS AND WRITES TO A LOG FILE
+                #>
+                Clear-Host
+                Write-Host "ERROR OCCURED WITH ACCESSING THE BLOATEWARE FUNCTION
+                            EITHER ON YOUR COMPUTER OR WITHIN THE SCRIPT ITSELF"
+                Set-Content -Value `n$Date -Path '.\LOG DIRECTORY\BloatBeGoneLogFile.txt'
+                Set-COntent -path '.\LOG DIRECTORY\BloatBeGoneLogFile.txt' -value "`nERROR OCCURED WITH ACCESSING THE BLOATWARE FUNCTION EITHER ON YOUR
+                COMPUTER OR WITIN THE SCRIPT ITSELF"
+                Write-Host "EXITING"
+                Start-Sleep 1.5
+            }
         }
         <#
             This switch statement  allows the user
@@ -40,8 +65,28 @@ function main
         #>
         "2"
         {
-            Clear-Host
-            UserChoice
+            <#
+                TRIES ACCESSING THE USERCHOICE FUNCTION
+                IF NOT IT WILL EXIT AND WRITE A LOG FILE
+            #>
+             try 
+             {
+                Clear-Host
+                UserChoice
+             }
+             catch 
+             {
+                Clear-Host
+                Write-Host "ERROR OCCURED WITH ACCESS TO THE USERCHOICE FUNCTION
+                THIS WAS EITHER CAUSED BY AN ISSUE WITH THE PROGRAM OR
+                AN ISSUE ON YOUR COMPUTER
+                "
+                Set-Content -Value `n$Date -Path '.\LOG DIRECTORY\BloatBeGoneLogFile.txt'
+                Set-Content -Path '.\LOG DIRECTORY\BloatBeGoneLogFile.txt' -value "`nERROR OCCURED WITH ACCESS TO THE USERCHOICE FUNCTION
+                THIS WAS EITHER CAUSED BY AN ISSUE WITH THE SCRIPT OR AN ISSUE ON YOUR COMPUTER"
+                Start-Sleep 1.5
+                Exit
+             }
         }
         <#
             Reverts Changes and runs an external program
@@ -49,8 +94,21 @@ function main
         #>
         "3"
         {
-            Clear-Host
-            RevertBackToPreviousConfiguration
+            <#
+                THIS WILL CALL THE FUNCTION
+                THAT WILL REVERT THE CONFIGURATION BACK TO NORMAL
+            #>
+            try 
+            {
+                Clear-Host
+                RevertBackToPreviousConfiguration    
+            }
+            catch 
+            {
+                Write-Host "`nTHERE WAS AN ERROR WITH CALLING THE REVERSION OF CONFIGURATION FUNCTION
+                THIS MAY BE AN ISSUE WITH THE SCRIPT OR AN ISSUE WITH THE COMPUTER ITSELF"
+            }
+            
         }
         <#
             This just straight up
@@ -65,7 +123,8 @@ function main
     
 }
 <#
-    Function that removes all windows bloatware straight up
+    THIS WILL BE A COMPLETE REMOVAL OF BLOATWARE 
+    WHICH WILL CALL A CONFIGURATION SCRIPPT
 #>
 function RemoveWindowsBloatware
 {
@@ -73,7 +132,10 @@ function RemoveWindowsBloatware
 
 }
 <#
-
+    THIS WILL ALLOW THE USER TO 
+    CHOOSE WHICH SETTINGS/CONFIGURATIONS
+    THEY WANT TO REMOVE BY CALLING AN EXTERNAL POWERSHELL PROGRAM 
+    WITHIN THE CURRENT PSSESSION
 #>
 function UserChoice
 {
@@ -81,11 +143,14 @@ function UserChoice
 }
 
 <#
-
+    CALLS AN EXTERNAL POWERSHELL SCRIPT THAT 
+    ALLOWS THE USER TO REVERT BACK TO THEIR PREVIOUS
+    CONFIGURATION
 #>
 function RevertBackToPreviousConfiguration
 {
     
 }
 
+Start-Job {main}
 main
