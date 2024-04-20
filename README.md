@@ -18,4 +18,7 @@ If you would like to support me in any way or form feel free to click on this pi
 of the Elder Scrolls III Morrowind.
 </br>
 </br>
-
+</br>
+<button>
+  <img src="https://static.wikia.nocookie.net/diablo/images/d/de/Cow.gif/revision/latest/smart/width/386/height/259?cb=20080316063633" alt="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fexplore%2Fdiablo-1&psig=AOvVaw1FxBWQ95K00U-dQYJyj2VN&ust=1713667649383000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKCgv8_jz4UDFQAAAAAdAAAAABAE"
+</button>
