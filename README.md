@@ -20,6 +20,5 @@ of the Elder Scrolls III Morrowind.
 </br>
 </br>
 <button>
-  <img src="https://static.wikia.nocookie.net/diablo/images/d/de/Cow.gif/revision/latest/smart/width/386/height/259?cb=20080316063633" alt="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fexplore%2Fdiablo-1&psig=AOvVaw1FxBWQ95K00U-      
-  dQYJyj2VN&ust=1713667649383000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKCgv8_jz4UDFQAAAAAdAAAAABAE"
+  <img src="https://media2.giphy.com/media/rNG8h94RU3y8OJwkeI/200w.gif?cid=6c09b952g1b4m4empcgmgkserem7kgqt12dt26s2x54cjz64&ep=v1_gifs_search&rid=200w.gif&ct=g">
 </button>
