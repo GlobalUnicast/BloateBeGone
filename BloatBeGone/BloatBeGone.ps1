@@ -35,7 +35,7 @@ function main
      )   
     Clear-Host # Clears the screen on startup and recall of the local script                         
     write-host $Menu
-    $UserInput = Read-Host "            "
+    $UserInput = Read-Host "        "
     switch -Exact ($UserInput)
     {
         <#
