@@ -5,11 +5,18 @@
                     remove perse in bloatware
 
 #>
-$global:CurrentDir = Get-Location
+$JOBLIST = @(
+    "ConfigRversion"
+    "RemoveWindowsBloatware"
+    "UserChoice"
+)   
+$global:CurrentDir = Get-Location   # GETS THE CURRENT WORKING DIRECTORY AND STORES INTO A GLOBAL VARIABLE
+Start-Job -FilePath .\BloatBeGone.ps1 -Name "BloatBeGone" # USED FOR QUICKER ACCESS TO THE MAIN MENU            
+
 function main
 {
     <#
-        GENERAL VARIABLES THAT ARE USED 
+        GENERAL VARIABLES THAT ARE USED                 
         FOR DIFFERENT CMDLET OPERATIONS
         WITHIN THE BLOATBEGONE
         POWERSHELL PROGRAM
@@ -26,6 +33,7 @@ function main
         
          "
      )   
+    Clear-Host # Clears the screen on startup and recall of the local script                         
     write-host $Menu
     $UserInput = Read-Host "            "
     switch -Exact ($UserInput)
@@ -85,6 +93,7 @@ function main
                 Set-Content -Path '.\LOG DIRECTORY\BloatBeGoneLogFile.txt' -value "`nERROR OCCURED WITH ACCESS TO THE USERCHOICE FUNCTION
                 THIS WAS EITHER CAUSED BY AN ISSUE WITH THE SCRIPT OR AN ISSUE ON YOUR COMPUTER"
                 Start-Sleep 1.5
+                Stop-Job -Name "BloatBeGone"
                 Exit
              }
         }
@@ -117,6 +126,8 @@ function main
         "4"
         {
             Clear-Host
+            Stop-Job -Name "BloatBeGone"
+            Clear-Host
             Exit
         }
     }
@@ -148,12 +159,8 @@ function UserChoice
     CONFIGURATION
 #>
     function RevertBackToPreviousConfiguration
-    {
-    
-    }
-    main
-
-start-job -ScriptBlock
 {
-    whoami.exe
+    
 }
+main
+
