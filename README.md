@@ -14,8 +14,7 @@ Some of them contained malware, some of them didn't do crap but (pardon my langu
 So there before there is an actual realease I am planning on testing within a virtual environment as well as utilizing
 TDD (Test Driven Development) in my construction of thus software.
 
-If you would like to support me in any way or form feel free to click on this picture
-of the Elder Scrolls III Morrowind.
+If you would like to support me in any way or form feel free to click here.
 </br>
 </br>
 </br>
