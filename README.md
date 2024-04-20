@@ -22,6 +22,5 @@ animated GIF.
 </br>
 </br>
 <button>
-  <img src="https://media2.giphy.com/media/rNG8h94RU3y8OJwkeI/200w.gif?cid=6c09b952g1b4m4empcgmgkserem7kgqt12dt26s2x54cjz64&ep=v1_gifs_search&rid=200w.gif&ct=g">
-  <a href="https://paypal.me/toxicsynapse?country.x=US&locale.x=en_US"</a>
+  <a href="https://paypal.me/toxicsynapse?country.x=US&locale.x=en_US" <img src="https://media2.giphy.com/media/rNG8h94RU3y8OJwkeI/200w.gif?cid=6c09b952g1b4m4empcgmgkserem7kgqt12dt26s2x54cjz64&ep=v1_gifs_search&rid=200w.gif&ct=g"/> </a>
 </button>                                              <---------------------------- CLICK HERE
