@@ -147,10 +147,13 @@ function UserChoice
     ALLOWS THE USER TO REVERT BACK TO THEIR PREVIOUS
     CONFIGURATION
 #>
-function RevertBackToPreviousConfiguration
-{
+    function RevertBackToPreviousConfiguration
+    {
     
-}
+    }
+    main
 
-Start-Job {main}
-main
+start-job -ScriptBlock
+{
+    whoami.exe
+}
