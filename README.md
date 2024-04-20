@@ -14,8 +14,8 @@ Some of them contained malware, some of them didn't do crap but (pardon my langu
 So there before there is an actual realease I am planning on testing within a virtual environment as well as utilizing
 TDD (Test Driven Development) in my construction of thus software.
 
-If you would like to support me in any way or form feel free to click on the <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT0LmyOK-dldjYfuKZMvUdFf9jZ-vOM7N9Q1RP8UgRBg&s" width="50" height="50">
-animated GIF
+If you would like to support me in any way or form feel free to click on the 
+animated GIF.
 </br>
 </br>
 </br>
