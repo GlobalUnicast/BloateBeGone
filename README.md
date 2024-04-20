@@ -1,6 +1,6 @@
 # 💀 BloateBeGone ⚔
 
-<h2><b>🗡OverView</b></h2>
+<h1><b>OVERVIEW</b></h1>
 BloatBeGone is an application that is written in powershell that gives
 user the freedom to remove whatever bloatware or unwanted system file that they want.
 Of course not being able to remove files that would cause your system unusable 🩸
