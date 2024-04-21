@@ -139,7 +139,17 @@ function main
 #>
 function RemoveWindowsBloatware
 {
-
+    try 
+    {
+        Clear-Host
+        Start-Job -FilePath .\RemoveWindowsBloatware.ps1 -Name "RemoveWindowsBloatWare"
+        Clear-Host
+        Start-Process .\RemoveWindowsBloatware.ps1
+    }
+    catch 
+    {
+        
+    }
 
 }
 <#
@@ -150,7 +160,14 @@ function RemoveWindowsBloatware
 #>
 function UserChoice
 {
+    try 
+    {
+        
+    }
+    catch 
+    {
 
+    }
 }
 
 <#
@@ -160,7 +177,14 @@ function UserChoice
 #>
     function RevertBackToPreviousConfiguration
 {
-    
+    try 
+    {
+        
+    }
+    catch 
+    {
+
+    }
 }
 main
 
