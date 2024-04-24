@@ -48,7 +48,8 @@ function main
             try 
             {
                 Clear-Host
-                RemoveWindowsBloatware    
+                Start-Job -Name RemoveWinBloatWare 
+                RemoveWindowsBloatware
             }
             catch
             {
@@ -126,8 +127,35 @@ function main
         "4"
         {
             Clear-Host
-            Stop-Job -Name "BloatBeGone"
-            Clear-Host
+            <#
+                THIS TRIES TO STOP THE JOB
+                THEN CATCHES AND FORCE EXITS THE PROGRAM
+                IF ERROR OCCURS
+            #>
+            try 
+            {
+                Start-Job -Name $JOBLIST
+                Clear-Host
+                Exit
+            }
+            catch
+            {
+                $EXITLOOP
+                for ($EXITLOOP = 0;$EXITLOOP -le 3;Start-Sleep 3)
+                {
+                    try 
+                    {
+                        Exit    
+                    }
+                    catch 
+                    {
+                        Exit            <#
+                            THIS WILL BE CHANGED LATER 
+                            TO MORE ERROR CHECKING
+                        #>
+                    }
+                }
+            }
             Exit
         }
     }
