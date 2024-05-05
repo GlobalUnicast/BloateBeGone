@@ -9,7 +9,6 @@
 $global:JOBLIST = {"RemoveWinBloatware", "UserChoice", "RevertBackToPreviousConfiguration"} # STORES JOB LISTS IN A STRING ARRAY
 $global:CurrentDir = Get-Location   # GETS THE CURRENT WORKING DIRECTORY AND STORES INTO A GLOBAL VARIABLE      
 $global:GetJob = Get-Job
-$global:JobInput = Read-Host "  "
 function main
 {
     <#
@@ -32,13 +31,14 @@ function main
      )   
     Clear-Host # Clears the screen on startup and recall of the local script                         
     write-host $Menu
-    $UserInput = Read-Host "        "
-    switch -Exact ($UserInput)
+    $MainMenuUserInput = Read-Host "        "
+    switch -Exact ($MainMenuUserInput)
     {
         "1"
         {
             try 
             {
+                $MainMenuUserInput = $null
                 Clear-Host
                 # Cheks to see if there are other jobs running 
                 if ($JOBLIST[1] -in $GetJob -or $JOBLIST[2] -in $GetJob)
@@ -46,11 +46,12 @@ function main
                     
                     Write-Host "Other Jobs Are Active`n"
                     Write-Host "Would you like to quit these jobs? Y/N`n"
-
-                    switch ($global:JobInput.ToLower())
+                    $JobInput
+                    switch ($JobInput.ToLower())
                     {
                         "y"
                         {
+                            $JobInput = $null
                             # Stops the current jobs
                             Stop-Job -Name $JOBLIST[1]
                             Stop-Job -Name $JOBLIST[2]
@@ -59,10 +60,15 @@ function main
                         }
                         "n"
                         {
+                            $JobInput = $null
                             Write-Host "Continuing the jobs"
                         }
                     }
-                    
+                    Start-Job -Name $global:JOBLIST[0] -ScriptBlock
+                    {
+                        Clear-Host
+                        RemoveWindowsBloatware
+                    }
                 }
             }
             catch
