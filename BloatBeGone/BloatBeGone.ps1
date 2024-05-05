@@ -1,18 +1,15 @@
-
 <#
                                              BLOATBEGONE|
-                    BloatBeGone is an application that allows the user to get freedom and control over what they choose to
-                    remove perse in bloatware
+                    Author: SatanicDev
+                    Version: NOT_REALEASED
+                    Powershell_Version
 
 #>
-$JOBLIST = @(
-    "ConfigRversion"
-    "RemoveWindowsBloatware"
-    "UserChoice"
-)   
-$global:CurrentDir = Get-Location   # GETS THE CURRENT WORKING DIRECTORY AND STORES INTO A GLOBAL VARIABLE
-Start-Job -FilePath .\BloatBeGone.ps1 -Name "BloatBeGone" # USED FOR QUICKER ACCESS TO THE MAIN MENU            
 
+$global:JOBLIST = {"RemoveWinBloatware", "UserChoice", "RevertBackToPreviousConfiguration"} # STORES JOB LISTS IN A STRING ARRAY
+$global:CurrentDir = Get-Location   # GETS THE CURRENT WORKING DIRECTORY AND STORES INTO A GLOBAL VARIABLE      
+$global:GetJob = Get-Job
+$global:JobInput = Read-Host "  "
 function main
 {
     <#
@@ -38,25 +35,38 @@ function main
     $UserInput = Read-Host "        "
     switch -Exact ($UserInput)
     {
-        <#
-            1 calls a function RemoveWindowsBloatware
-            that Removes Windows Bloatware from a configuration File
-            or predefined configuration 
-        #>
         "1"
         {
             try 
             {
                 Clear-Host
-                Start-Job -Name RemoveWinBloatWare 
-                RemoveWindowsBloatware
+                # Cheks to see if there are other jobs running 
+                if ($JOBLIST[1] -in $GetJob -or $JOBLIST[2] -in $GetJob)
+                {   
+                    
+                    Write-Host "Other Jobs Are Active`n"
+                    Write-Host "Would you like to quit these jobs? Y/N`n"
+
+                    switch ($global:JobInput.ToLower())
+                    {
+                        "y"
+                        {
+                            # Stops the current jobs
+                            Stop-Job -Name $JOBLIST[1]
+                            Stop-Job -Name $JOBLIST[2]
+                            Clear-Host
+                            main # Call main
+                        }
+                        "n"
+                        {
+                            Write-Host "Continuing the jobs"
+                        }
+                    }
+                    
+                }
             }
             catch
             {
-                <#
-                    THIS POPS AN ERROR TO THE DISPLAY AND WILL EXIT THE PROGRAM
-                    AFTER TEN SECONDS AND WRITES TO A LOG FILE
-                #>
                 Clear-Host
                 Write-Host "ERROR OCCURED WITH ACCESSING THE BLOATEWARE FUNCTION
                             EITHER ON YOUR COMPUTER OR WITHIN THE SCRIPT ITSELF"
